@@ -65,9 +65,9 @@ $(function() {
 
 		if ($('#lightbox').css('display') === 'block') {
 			var listing = data[$(target).attr('data-id')];
-			$('#lightbox').append(listing.title);
+			$('#lightbox-content').append(listing.title);
 		} else {
-			$('#lightbox').empty();
+			$('#lightbox-content').empty();
 		}
 	};
 	
