@@ -1,5 +1,7 @@
 $(function() {
 
+	var data = {};
+
 	$('.submit').click(function(e) {
 	   	e.preventDefault();
 
@@ -9,6 +11,18 @@ $(function() {
 		submitQuery(url);
 		$('#results').empty();
 		$('#spinner').toggle();
+	});
+
+	$('#overlay').add('#lightbox-close').click(function() {
+		toggleLightbox();
+	});
+
+	$(document).keyup(function(e) {
+		var lightbox = $('#lightbox');
+
+		if (e.keyCode == 27 && lightbox.css('display') === 'block') {
+			toggleLightbox();
+		}
 	});
 
 	var buildQuery = function(keywords) {
@@ -34,10 +48,27 @@ $(function() {
 	};
 
 	var displayListings = function(listings) {
-		listings.forEach(function(listing) {
-			var template = '<div class="listing"><a href=' + listing.url + '><div class="listing-image"><img src="' + listing.Images[0].url_570xN + '"></div><div class="listing-title">' + listing.title + '</div></a></div>'
+		listings.forEach(function(listing, i) {
+			var template = '<div class="listing" data-id=' + i + '><div class="listing-image"><img src="' + listing.Images[0].url_570xN + '"></div><div class="listing-title">' + listing.title + '</div></div>'
 			$('#results').append(template);
+			data[i] = listing;
 		})
+
+		$('.listing').click(function() {
+			toggleLightbox(this);
+		});
+	};
+
+	var toggleLightbox = function(target) {
+		$('#lightbox').toggle();
+		$('#overlay').toggle();
+
+		if ($('#lightbox').css('display') === 'block') {
+			var listing = data[$(target).attr('data-id')];
+			$('#lightbox').append(listing.title);
+		} else {
+			$('#lightbox').empty();
+		}
 	};
 	
 })

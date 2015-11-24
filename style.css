@@ -1,8 +1,13 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Futura', 'Helvetica', 'Arial';
+}
+
 #container {
 	width: 80%;
 	margin: auto;
 	color: #333;
-	font-family: 'Futura', 'Helvetica', 'Arial';
 }
 
 .header {
@@ -121,5 +126,37 @@ body {
 
 .listing-title {
 	margin: 0 5%;
+}
+
+#lightbox {
+	z-index: 1000;
+	width: 70%;
+	height: 80%;
+	padding: 20px;
+	position: fixed;
+	top: 10%;
+	left: 15%;
+	background-color: white;
+	box-shadow: 0 0 20px #aaa;
+	display: none;
+	font-family: inherit;
+}
+
+#lightbox-close {
+	color: #999;
+	margin: 10px;
+	position: absolute;	
+	right: 0;
+	top: 0;
+}
+
+#overlay {
+	z-index: 500;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.15);
+	display: none;
 }
 

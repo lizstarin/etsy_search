@@ -4,6 +4,7 @@
 	<head>
 		<title>Search Etsy!</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div id='container'>
@@ -16,6 +17,10 @@
 			<div id='spinner'><img src='ajax-loader.gif'></div>
 			<div id='results'></div>
 		</div>
+		<div id='lightbox'>
+			<span id='lightbox-close' class='fa fa-close'></span>
+		</div>
+		<div id='overlay'></div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script type="text/javascript" src='config.js'></script>
